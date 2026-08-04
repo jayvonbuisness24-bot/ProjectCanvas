@@ -1,0 +1,72 @@
+# ===========================
+
+# Project Canvas - .gitignore
+
+# Meliorism Studios
+
+# ===========================
+
+# --- Rojo ---
+
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+
+# --- Roblox Studio backups ---
+
+*.rbxl.lock
+*.rbxlx.lock
+
+# --- Rojo build output ---
+
+build/
+builds/
+
+# --- Logs ---
+
+*.log
+logs/
+
+# --- Temporary files ---
+
+*.tmp
+*.temp
+
+# --- OS files ---
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- VS Code workspace settings (keep personal settings out of Git) ---
+
+.vscode/
+
+# --- GitHub / Claude local artifacts ---
+
+.claude/
+.copilot/
+
+# --- Environment files ---
+
+.env
+.env.*
+
+# --- Node (if ever used for tooling) ---
+
+node_modules/
+
+# --- Package manager locks (uncomment if needed) ---
+
+# package-lock.json
+
+# yarn.lock
+
+# pnpm-lock.yaml
+
+# --- Misc ---
+
+*.bak
+*.old
+*.orig

@@ -53,4 +53,62 @@
     toggles, sway/bob placeholders) and `ViewmodelDefinitions` (shared
     definition registry) modules
 
-No gameplay was implemented in TASK-001, TASK-002, TASK-003, or TASK-004.
+- Semi-auto marker prototype for TASK-005:
+  - `WeaponController`, the third Controller registered through the
+    `ControllerLoader` (after `CameraController`/`ViewmodelController`)
+  - `WeaponService`, the first Service registered through the
+    `ServiceLoader`
+  - New `FireWeapon` RemoteEvent (`NetworkDefinitions`); client sends
+    origin/direction/weapon id/timestamp only, per CLAUDE.md's
+    Networking Rules
+  - Server-authoritative validation: payload shape, weapon id, an
+    origin-vs-character sanity check, and a server-clock fire-rate gate
+    (the client-supplied timestamp is never trusted for rate limiting)
+  - Server-authoritative raycast, ignoring the shooter's own character
+  - Purely cosmetic, local-only client feedback (muzzle flash and
+    tracer placeholders) from an unrelated client-side predicted
+    raycast — never used to decide a hit
+  - New `WeaponDefinitions` (shared, weapon-agnostic registry) module;
+    `WeaponConfig` extended with `WeaponId`, `FireRate`, `MaximumRange`,
+    `PaintballSpeed` (placeholder), `Automatic` (false), `MarkerName`
+  - New `CombatTypes.FireWeaponRequest` type
+  - No damage, health, ammo, reload, weapon switching, or rounds
+
+- Marker firing presentation pass for TASK-006:
+  - Placeholder marker rebuilt as six parts (Body, Barrel, Grip,
+    TriggerFrame, Hopper, Tank) instead of one block; arms repositioned
+    so the right hand reads as holding the grip and the left hand as
+    supporting the front
+  - New `ViewmodelController.PlayFirePresentation()`: a small,
+    self-contained fire kick (hand-rolled two-phase per-frame lerp, no
+    `TweenService`/extra Instance) that always returns cleanly to rest
+    and never accumulates; `WeaponController` requests it rather than
+    `ViewmodelController` listening for input itself
+  - New `client/Weapons/ShotEffects` module: muzzle flash and tracer
+    (immediate, client-predicted) plus impact effect (spawned only from
+    the server-confirmed position, distinguishing a real surface hit
+    from an empty-space range termination)
+  - `FireWeapon` RemoteEvent reused bidirectionally: the server now
+    replies with a `CombatTypes.FireConfirmation`
+    (`RequestId`/`Hit`/`Position`/`Normal`) after validating and
+    raycasting — no damage/health/elimination data, ever
+  - Rapid-fire rejection logging reworked: ordinary fire-rate rejections
+    are now silent by default (`Logger.Debug`) instead of one `Warn`
+    per click; sustained abnormal rejection rates still produce a
+    single throttled `Warn`, reusing the existing
+    `NetworkUtils.CreateRateLimiter` rather than new bespoke tracking.
+    The rejection logic itself is unchanged — only its logging.
+  - `ViewmodelConfig` extended with kick tuning
+    (`KickPosition`/`KickRotation`/`KickInDuration`/`KickReturnDuration`)
+    and inert `CameraKickEnabled`/`CameraKickAmount` placeholders (no
+    `CameraController` extension point exists yet — documented
+    limitation, `CameraController` was not modified)
+  - `WeaponConfig` extended with `PaintColor` and shot/impact/muzzle
+    presentation tuning, plus `RejectedRequestWarningThreshold`/
+    `RejectedRequestWindowSeconds`/`RejectedRequestWarningCooldown`
+  - New `CombatTypes.FireConfirmation` type
+  - Still no damage, health, eliminations, ammo, reload, weapon
+    switching, or rounds
+
+No gameplay consequences (damage, elimination, scoring) were implemented
+in TASK-001 through TASK-006.

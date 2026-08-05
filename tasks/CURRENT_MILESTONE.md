@@ -148,3 +148,51 @@ Create the first-person camera controller, integrate it through the approved con
 
 Status: Ready for Implementation
 Status: In Testing
+- ✅ TASK-001 — Project Foundation
+- ✅ TASK-002 — Framework Bootstrap
+- ✅ TASK-003 — First-Person Camera Foundation
+- ✅ TASK-004 — Viewmodel System
+- ⏳ TASK-005 — Semi-Auto Marker Prototype
+- TASK-006 — First Playable Test Arena
+## Current Task
+
+### TASK-005 — Semi-Auto Marker Prototype
+
+Status: Ready for Implementation
+TASK-006 — Marker Presentation Pass
+- ✅ TASK-001 — Project Foundation
+- ✅ TASK-002 — Framework Bootstrap
+- ✅ TASK-003 — First-Person Camera Foundation
+- ✅ TASK-004 — Viewmodel System
+- ✅ TASK-005 — Semi-Auto Marker Prototype
+- ⏳ TASK-006 — Marker Presentation Pass
+- TASK-007 — First Playable Test Arena
+
+## Current Task
+
+### TASK-006 — Marker Presentation Pass
+
+Status: Ready for Implementation
+
+Objective:
+
+Improve the temporary paintball marker, arm pose, firing feedback, shot visualization, impact feedback, and rapid-fire rejection logging without adding damage or other gameplay systems.
+
+- ✅ TASK-001 — Project Foundation
+- ✅ TASK-002 — Framework Bootstrap
+- ✅ TASK-003 — First-Person Camera Foundation
+- ✅ TASK-004 — Viewmodel System
+- ✅ TASK-005 — Semi-Auto Marker Prototype
+- ✅ TASK-006 — Marker Presentation Pass
+- ⏳ TASK-007 — First Playable Test Arena
+
+## Current Task
+
+### TASK-007 — First Playable Test Arena
+
+Status: Ready for Implementation
+
+Objective:
+
+Create a temporary multiplayer arena for testing camera, viewmodel, firing, raycasts, impact presentation, spawn placement, respawn behavior, and multiplayer synchronization.
+

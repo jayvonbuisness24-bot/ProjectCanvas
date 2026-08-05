@@ -36,11 +36,12 @@ local ServiceLoader = require(Shared:WaitForChild("Framework"):WaitForChild("Ser
 local LifecycleTypes = require(Shared.Framework.LifecycleTypes)
 local Logger = require(Shared.Utilities.Logger)
 
--- Explicit, ordered registry of approved server Services. Empty for
--- TASK-002: no gameplay Services are approved yet (see
--- tasks/CURRENT_MILESTONE.md). Add entries above the LoadAll call as
--- each Service is approved — never auto-scan src/server/Services.
-local ApprovedServices: { LifecycleTypes.RegistryEntry } = {}
+-- Explicit, ordered registry of approved server Services. Add entries
+-- above the LoadAll call as each Service is approved — never auto-scan
+-- src/server/Services.
+local ApprovedServices: { LifecycleTypes.RegistryEntry } = {
+	{ Name = "WeaponService", Module = script.Parent.Services.WeaponService },
+}
 
 local summary = ServiceLoader.LoadAll(ApprovedServices)
 

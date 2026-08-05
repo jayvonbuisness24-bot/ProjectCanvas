@@ -45,6 +45,7 @@ local Logger = require(Shared.Utilities.Logger)
 local ApprovedControllers: { LifecycleTypes.RegistryEntry } = {
 	{ Name = "CameraController", Module = script.Parent.Controllers.CameraController },
 	{ Name = "ViewmodelController", Module = script.Parent.Controllers.ViewmodelController },
+	{ Name = "WeaponController", Module = script.Parent.Controllers.WeaponController },
 }
 
 local summary = ControllerLoader.LoadAll(ApprovedControllers)

@@ -135,3 +135,16 @@ Status: In Testing
 Objective:
 
 Create the first-person camera controller, integrate it through the approved controller bootstrap, and verify first-person behavior, FOV, local character visibility, respawn recovery, and multiplayer visibility.
+
+- ✅ TASK-001 — Project Foundation
+- ✅ TASK-002 — Framework Bootstrap
+- ✅ TASK-003 — First-Person Camera Foundation
+- ⏳ TASK-004 — Viewmodel System
+- TASK-005 — Semi-Auto Marker Prototype
+- TASK-006 — First Playable Test Arena
+## Current Task
+
+### TASK-004 — Viewmodel System
+
+Status: Ready for Implementation
+Status: In Testing

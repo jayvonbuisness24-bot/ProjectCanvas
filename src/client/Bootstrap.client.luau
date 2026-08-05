@@ -24,10 +24,12 @@
 	Future Notes:
 		Register new Controllers here as they are approved and
 		implemented, e.g.:
-			{ Name = "ViewmodelController", Module = script.Parent.Viewmodels.ViewmodelController }
+			{ Name = "InputController", Module = script.Parent.Controllers.InputController }
 		Do not require Controllers directly from any other script — this
 		registry is the single, predictable place startup order is
-		controlled from (see TASK-002_FRAMEWORK_BOOTSTRAP.md).
+		controlled from (see TASK-002_FRAMEWORK_BOOTSTRAP.md). Order is
+		significant: entries load strictly in array order (see
+		TASK-004_VIEWMODEL_SYSTEM.md).
 ]]
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -42,6 +44,7 @@ local Logger = require(Shared.Utilities.Logger)
 -- auto-scan src/client/Controllers.
 local ApprovedControllers: { LifecycleTypes.RegistryEntry } = {
 	{ Name = "CameraController", Module = script.Parent.Controllers.CameraController },
+	{ Name = "ViewmodelController", Module = script.Parent.Controllers.ViewmodelController },
 }
 
 local summary = ControllerLoader.LoadAll(ApprovedControllers)

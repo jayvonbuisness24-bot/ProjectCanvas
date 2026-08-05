@@ -37,4 +37,20 @@
   - `CameraConfig` extended with first-person, mouse-lock, and
     local-visibility toggles plus a motion-effects placeholder
 
-No gameplay was implemented in TASK-001, TASK-002, or TASK-003.
+- First-person viewmodel system for TASK-004:
+  - `ViewmodelController`, the second Controller registered through the
+    `ControllerLoader` (after `CameraController`, deterministic order)
+  - Placeholder arms + marker built at runtime from Parts (Option A —
+    no Studio asset pipeline exists yet), parented to
+    `Workspace.CurrentCamera` and tracked every render step without
+    ever writing to the camera's own `CFrame`
+  - Weapon-agnostic: resolves a `ViewmodelDefinition` by id rather than
+    hardcoding one marker
+  - Clean rebind/cleanup across `CurrentCamera` replacement and
+    character spawn/reset/respawn/removal — never more than one active
+    viewmodel
+  - New `ViewmodelConfig` (offsets, render priority, visibility/enable
+    toggles, sway/bob placeholders) and `ViewmodelDefinitions` (shared
+    definition registry) modules
+
+No gameplay was implemented in TASK-001, TASK-002, TASK-003, or TASK-004.

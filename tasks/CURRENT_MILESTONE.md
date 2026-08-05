@@ -126,4 +126,12 @@ Every task must be:
 5. Committed
 6. Pushed
 
-before moving to the next task.
+before moving to the next task.## Current Task
+
+### TASK-003 — First-Person Camera Foundation
+
+Status: In Testing
+
+Objective:
+
+Create the first-person camera controller, integrate it through the approved controller bootstrap, and verify first-person behavior, FOV, local character visibility, respawn recovery, and multiplayer visibility.

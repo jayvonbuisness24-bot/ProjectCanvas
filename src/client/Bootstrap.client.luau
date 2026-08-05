@@ -24,7 +24,7 @@
 	Future Notes:
 		Register new Controllers here as they are approved and
 		implemented, e.g.:
-			{ Name = "CameraController", Module = script.Parent.Camera.CameraController }
+			{ Name = "ViewmodelController", Module = script.Parent.Viewmodels.ViewmodelController }
 		Do not require Controllers directly from any other script — this
 		registry is the single, predictable place startup order is
 		controlled from (see TASK-002_FRAMEWORK_BOOTSTRAP.md).
@@ -37,11 +37,12 @@ local ControllerLoader = require(Shared:WaitForChild("Framework"):WaitForChild("
 local LifecycleTypes = require(Shared.Framework.LifecycleTypes)
 local Logger = require(Shared.Utilities.Logger)
 
--- Explicit, ordered registry of approved client Controllers. Empty for
--- TASK-002: no gameplay Controllers are approved yet (see
--- tasks/CURRENT_MILESTONE.md). Add entries above the LoadAll call as
--- each Controller is approved — never auto-scan src/client/Controllers.
-local ApprovedControllers: { LifecycleTypes.RegistryEntry } = {}
+-- Explicit, ordered registry of approved client Controllers. Add
+-- entries above the LoadAll call as each Controller is approved — never
+-- auto-scan src/client/Controllers.
+local ApprovedControllers: { LifecycleTypes.RegistryEntry } = {
+	{ Name = "CameraController", Module = script.Parent.Controllers.CameraController },
+}
 
 local summary = ControllerLoader.LoadAll(ApprovedControllers)
 

@@ -24,4 +24,17 @@
   - Deterministic `Init()` and `Start()` lifecycle
   - Per-module startup error isolation and logging
 
-No gameplay was implemented in TASK-001 or TASK-002.
+- First-person camera foundation for TASK-003:
+  - `CameraController`, the first Controller registered through the
+    TASK-002 `ControllerLoader`
+  - Forced first-person camera mode and center-locked mouse
+  - Default field of view applied from `CameraConfig`, reapplied
+    whenever `CurrentCamera` is replaced (e.g. on respawn)
+  - Local-only hiding of the player's own head and accessories via
+    `LocalTransparencyModifier` (server-authoritative `Transparency`
+    untouched; other players see the character normally)
+  - Clean bind/unbind across spawn, respawn, and character removal
+  - `CameraConfig` extended with first-person, mouse-lock, and
+    local-visibility toggles plus a motion-effects placeholder
+
+No gameplay was implemented in TASK-001, TASK-002, or TASK-003.
